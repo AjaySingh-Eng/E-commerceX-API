@@ -5,7 +5,7 @@ export interface Product {
   /**
    * The unique identifier of the product.
    */
-id: string;
+  id: string;
   /**
    * The name of the product.
    */
@@ -22,10 +22,14 @@ id: string;
    * The URL of the product image.
    */
   imageUrl: string;
-    /**
-     * The category of the product.
-     */
-    category?: string;
+  /**
+   * The category of the product.
+   */
+  category?: string;
+  /**
+   * The subcategory of the product.
+   */
+  subcategory?: string;
 }
 
 /**
@@ -43,16 +47,20 @@ export async function getProduct(productId: string): Promise<Product> {
     description: 'This is a sample product description.',
     price: 25.00,
     imageUrl: 'https://picsum.photos/200/300',
+    category: 'men',
+    subcategory: 't-shirts',
   };
 }
 
 /**
- * Asynchronously retrieves a list of products based on a search query.
+ * Asynchronously retrieves a list of products based on a search query and category.
  *
  * @param query The search query to filter products.
+ * @param category The category to filter products.
+ * @param subcategory The subcategory to filter products.
  * @returns A promise that resolves to an array of Product objects that match the search query.
  */
-export async function searchProducts(query: string, category?: string): Promise<Product[]> {
+export async function searchProducts(query: string, category?: string, subcategory?: string): Promise<Product[]> {
   const allProducts: Product[] = [
     {
       id: '1',
@@ -61,6 +69,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 29.99,
       imageUrl: 'https://picsum.photos/id/250/300/200',
       category: 'men',
+      subcategory: 't-shirts',
     },
     {
       id: '2',
@@ -69,6 +78,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 79.99,
       imageUrl: 'https://picsum.photos/id/251/300/200',
       category: 'women',
+      subcategory: 'dresses',
     },
     {
       id: '3',
@@ -77,6 +87,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 59.99,
       imageUrl: 'https://picsum.photos/id/252/300/200',
       category: 'men',
+      subcategory: 'shoes',
     },
     {
       id: '4',
@@ -85,6 +96,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 99.99,
       imageUrl: 'https://picsum.photos/id/253/300/200',
       category: 'men',
+      subcategory: 'jackets',
     },
     {
       id: '5',
@@ -93,6 +105,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 49.99,
       imageUrl: 'https://picsum.photos/id/254/300/200',
       category: 'men',
+      subcategory: 'jeans',
     },
     {
       id: '6',
@@ -101,6 +114,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 39.99,
       imageUrl: 'https://picsum.photos/id/255/300/200',
       category: 'women',
+      subcategory: 'skirts',
     },
     {
       id: '7',
@@ -109,6 +123,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 89.99,
       imageUrl: 'https://picsum.photos/id/256/300/200',
       category: 'women',
+      subcategory: 'shoes',
     },
     {
       id: '8',
@@ -117,6 +132,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 34.99,
       imageUrl: 'https://picsum.photos/id/257/300/200',
       category: 'men',
+      subcategory: 'shirts',
     },
     {
       id: '9',
@@ -125,6 +141,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 69.99,
       imageUrl: 'https://picsum.photos/id/258/300/200',
       category: 'men',
+      subcategory: 'sweaters',
     },
     {
       id: '10',
@@ -133,6 +150,7 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 24.99,
       imageUrl: 'https://picsum.photos/id/259/300/200',
       category: 'men',
+      subcategory: 'shorts',
     },
     {
       id: '11',
@@ -141,38 +159,101 @@ export async function searchProducts(query: string, category?: string): Promise<
       price: 44.99,
       imageUrl: 'https://picsum.photos/id/260/300/200',
       category: 'kids',
+      subcategory: 'dresses',
     },
-     {
+    {
       id: '12',
       name: 'Boys T-shirt',
       description: 'A simple and cool t-shirt for boys',
       price: 14.99,
       imageUrl: 'https://picsum.photos/id/261/300/200',
       category: 'kids',
+      subcategory: 'shirts',
     },
-      {
+    {
       id: '13',
       name: 'Simple Bed',
       description: 'A simple bed for your home',
       price: 244.99,
       imageUrl: 'https://picsum.photos/id/270/300/200',
       category: 'home',
+      subcategory: 'furniture',
     },
-     {
+    {
       id: '14',
       name: 'Table',
       description: 'A simple table for your home',
       price: 144.99,
       imageUrl: 'https://picsum.photos/id/271/300/200',
       category: 'home',
+      subcategory: 'furniture',
+    },
+    {
+      id: '15',
+      name: 'Red lipstick',
+      description: 'A vibrant lipstick for your beauty',
+      price: 24.99,
+      imageUrl: 'https://picsum.photos/id/280/300/200',
+      category: 'beauty',
+      subcategory: 'makeup',
+    },
+    {
+      id: '16',
+      name: 'Foundation',
+      description: 'A  base foundation for your beauty',
+      price: 34.99,
+      imageUrl: 'https://picsum.photos/id/281/300/200',
+      category: 'beauty',
+      subcategory: 'makeup',
+    },
+    {
+      id: '17',
+      name: 'Cool cap',
+      description: 'A vibrant cap for genz',
+      price: 14.99,
+      imageUrl: 'https://picsum.photos/id/290/300/200',
+      category: 'genz',
+      subcategory: 'accessories',
+    },
+    {
+      id: '18',
+      name: 'Baggy jeans',
+      description: 'A cool baggy jeans for genz',
+      price: 54.99,
+      imageUrl: 'https://picsum.photos/id/291/300/200',
+      category: 'genz',
+      subcategory: 'clothing',
+    },
+    {
+      id: '19',
+      name: 'Paint Brush',
+      description: 'A cool paint brush for your painting',
+      price: 4.99,
+      imageUrl: 'https://picsum.photos/id/300/300/200',
+      category: 'studio-new',
+      subcategory: 'art',
+    },
+    {
+      id: '20',
+      name: 'Canvas',
+      description: 'A new canvas for your art',
+      price: 14.99,
+      imageUrl: 'https://picsum.photos/id/301/300/200',
+      category: 'studio-new',
+      subcategory: 'art',
     },
   ];
 
   let filteredProducts = allProducts;
 
-    if (category) {
-        filteredProducts = allProducts.filter(product => product.category === category);
-    }
+  if (category) {
+    filteredProducts = filteredProducts.filter(product => product.category === category);
+  }
+
+  if (subcategory) {
+    filteredProducts = filteredProducts.filter(product => product.subcategory === subcategory);
+  }
+
 
   if (query) {
     filteredProducts = filteredProducts.filter(product =>

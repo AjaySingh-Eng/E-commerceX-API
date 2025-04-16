@@ -17,22 +17,24 @@ import Link from 'next/link';
 export default function Home() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || undefined; // ✅ correct way
+  const initialSubcategory = searchParams.get('subcategory') || undefined;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<{[key: string]: number}>({});
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-    const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
+  const [activeSubcategory, setActiveSubcategory] = useState<string | undefined>(initialSubcategory);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const results = await searchProducts(searchTerm, activeCategory);
+      const results = await searchProducts(searchTerm, activeCategory, activeSubcategory);
       setProducts(results);
     };
 
     fetchProducts();
-  }, [searchTerm, activeCategory]);
+  }, [searchTerm, activeCategory, activeSubcategory]);
 
   useEffect(() => {
     const fetchAiRecommendations = async () => {
@@ -93,7 +95,7 @@ export default function Home() {
       <div className="flex justify-start items-center mb-4">
         {/* Logo */}
         <Image
-          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Fflamingo.png?alt=media&token=8f884a5f-b7a3-4b5b-a98f-2b0b3b6f1f0b"
+          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Flogo.png?alt=media&token=0e7b9433-df3c-425f-8790-7c9b3a311a59"
           alt="MarG Logo"
           width={50}
           height={50}
@@ -116,17 +118,18 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto">
-             <Input
+          <Input
             type="search"
             placeholder="Search for products..."
-            className="w-full md:w-1/2 mr-4 bg-white"
+            className="w-full md:w-1/2 mr-4"
             value={searchTerm}
             onChange={handleSearchChange}
+            style={{ backgroundColor: 'white' }}
           />
           {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" style={{ backgroundColor: 'white' }}>
+              <Button variant="outline"  style={{ backgroundColor: 'white' }}>
                 Bag
                 {Object.keys(cart).length > 0 && (
                   <Badge className="ml-2">{Object.keys(cart).length}</Badge>
