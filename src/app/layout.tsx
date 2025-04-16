@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
+import Link from 'next/link';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,6 +27,174 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ backgroundColor: 'skyblue' }}>
         {children}
+        <footer className="bg-dark-gray text-light-gray py-8">
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* ONLINE SHOPPING */}
+            <div>
+              <h3 className="font-bold text-lg mb-4">ONLINE SHOPPING</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/men" className="hover:text-accent-coral">
+                    Men
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/women" className="hover:text-accent-coral">
+                    Women
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/kids" className="hover:text-accent-coral">
+                    Kids
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/home" className="hover:text-accent-coral">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/beauty" className="hover:text-accent-coral">
+                    Beauty
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/genz" className="hover:text-accent-coral">
+                    GenZ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/studio-new" className="hover:text-accent-coral">
+                    Studio New
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Gift Cards
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Myntra Insider
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* USEFUL LINKS */}
+            <div>
+              <h3 className="font-bold text-lg mb-4">USEFUL LINKS</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Site Map
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Corporate Information
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Whitehat
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Cleartrip
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* CUSTOMER POLICIES */}
+            <div>
+              <h3 className="font-bold text-lg mb-4">CUSTOMER POLICIES</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    T&amp;C
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Terms Of Use
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Track Orders
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Shipping
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Cancellation
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Returns
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Privacy policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-accent-coral">
+                    Grievance Redressal
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="container mx-auto mt-8 flex flex-col md:flex-row justify-between items-center">
+            {/* EXPERIENCE MYNTRA APP ON MOBILE */}
+            <div>
+              <h3 className="font-bold text-lg mb-2">EXPERIENCE MYNTRA APP ON MOBILE</h3>
+              {/* Add your app store links or images here */}
+            </div>
+
+            {/* KEEP IN TOUCH */}
+            <div>
+              <h3 className="font-bold text-lg mb-2">KEEP IN TOUCH</h3>
+              {/* Add social media icons or links here */}
+            </div>
+          </div>
+
+          <div className="container mx-auto mt-8 text-center">
+            <p>100% ORIGINAL guarantee for all products at flipmint.com</p>
+            <p>Return within 14 days of receiving your order</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
