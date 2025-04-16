@@ -25,7 +25,7 @@ export default function Home() {
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
-  const [activeSubcategory, setActiveSubcategory] = useState<string | undefined>(initialSubcategory);
+    const [activeSubcategory, setActiveSubcategory] = useState<string | undefined>(initialSubcategory);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -88,6 +88,41 @@ export default function Home() {
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
+
+  const offers = [
+    {
+      id: 'o1',
+      title: 'Summer Sale',
+      description: 'Up to 50% off on selected items!',
+      imageUrl: 'https://picsum.photos/id/300/800/300',
+      cta: 'Shop Now',
+    },
+    {
+      id: 'o2',
+      title: 'New Arrivals',
+      description: 'Check out our latest collection.',
+      imageUrl: 'https://picsum.photos/id/301/800/300',
+      cta: 'View New Arrivals',
+    },
+  ];
+
+  const latestProducts = products.slice(0, 5);
+
+  const sponsors = [
+    {
+      id: 's1',
+      name: 'Adidas',
+      logoUrl: 'https://picsum.photos/id/400/100/50',
+      link: '#',
+    },
+    {
+      id: 's2',
+      name: 'Nike',
+      logoUrl: 'https://picsum.photos/id/401/100/50',
+      link: '#',
+    },
+  ];
+
 
   return (
     <div className="container mx-auto p-4">
@@ -159,6 +194,48 @@ export default function Home() {
           <Button variant="outline" className="ml-2"  style={{ backgroundColor: 'white' }}>
             Wishlist
           </Button>
+        </div>
+      </div>
+
+      {/* Offers Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Offers</h2>
+        <div className="flex overflow-x-auto space-x-4">
+          {offers.map(offer => (
+            <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
+              <h3 className="text-xl font-semibold">{offer.title}</h3>
+              <p className="text-gray-500">{offer.description}</p>
+              <Button className="mt-4">{offer.cta}</Button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Latest Products Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Latest Products</h2>
+        <div className="flex overflow-x-auto space-x-4">
+          {latestProducts.map(product => (
+            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
+              <h3 className="text-xl font-semibold">{product.name}</h3>
+              <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Sponsors Section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Sponsors</h2>
+        <div className="flex overflow-x-auto space-x-4">
+          {sponsors.map(sponsor => (
+            <div key={sponsor.id} className="w-48 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={sponsor.logoUrl} alt={sponsor.name} className="w-full h-24 object-contain rounded-md mb-2" />
+              <h3 className="text-xl font-semibold">{sponsor.name}</h3>
+            </div>
+          ))}
         </div>
       </div>
 
