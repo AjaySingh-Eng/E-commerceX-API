@@ -1,4 +1,3 @@
-// src/ai/flows/product-recommendations.ts
 'use server';
 /**
  * @fileOverview Product recommendation AI agent.
@@ -94,7 +93,7 @@ const productRecommendationsFlow = ai.defineFlow<
   },
   async input => {
     const productIds = input.cartItems.map(item => item.productId);
-    const {recommendedProductIds} = await productRecommendationTool({productIds});
-    return {recommendedProductIds};
+    const recommendedProductIds = await productRecommendationTool({productIds});
+    return { recommendedProductIds };
   }
 );
