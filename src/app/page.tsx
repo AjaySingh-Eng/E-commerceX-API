@@ -201,7 +201,7 @@ export default function Home() {
 
       {/* Offers Section */}
       <div className="mb-8" style={{ background: gradientStyle }}>
-        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-white text-center">Offers</h2>
         <div className="flex overflow-x-auto space-x-4 justify-center">
           {offers.map(offer => (
             <div key={offer.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white text-center">
