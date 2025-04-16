@@ -16,20 +16,17 @@ import Link from 'next/link';
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category') || undefined; // ✅ correct way
+  const initialCategory = searchParams.get('category') || undefined;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<{[key: string]: number}>({});
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
   const [gradientStyle, setGradientStyle] = useState('');
 
 
   useEffect(() => {
-    setGradientStyle('linear-gradient(to right, #f472b6, #1e40af)');
-
     const fetchProducts = async () => {
       const results = await searchProducts(searchTerm, activeCategory);
       setProducts(results);
@@ -125,10 +122,9 @@ export default function Home() {
     },
   ];
 
-  const idCounts = products.reduce((acc: { [key: string]: number }, product) => {
-    acc[product.id] = (acc[product.id] || 0) + 1;
-    return acc;
-  }, {});
+  useEffect(() => {
+    setGradientStyle('linear-gradient(to right, #f472b6, #1e40af)');
+  }, []);
 
   return (
     <div className="container mx-auto p-4">
@@ -161,7 +157,7 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto bg-white">
-          <Input
+           <Input
             type="search"
             placeholder="Search for products..."
             className="w-full md:w-1/2 mr-4"
@@ -205,36 +201,42 @@ export default function Home() {
       </div>
 
       {/* Offers Section */}
-      <div className="mb-8" style={{ background: gradientStyle }}>
-        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
-        <div className="flex overflow-x-auto space-x-4">
-          {offers.map(offer => (
-            <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
-              <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{offer.title}</h3>
-              <p className="text-gray-500">{offer.description}</p>
-              <Button className="mt-4" style={{ color: '#1e40af' }}>{offer.cta}</Button>
-            </div>
-          ))}
+      <div className="mb-8 flex justify-center" style={{ background: gradientStyle }}>
+        <div className="w-3/4">
+          <h2 className="text-2xl font-semibold mb-4 text-white text-center">Offers</h2>
+          <div className="flex overflow-x-auto space-x-4 justify-center">
+            {offers.map(offer => (
+              <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
+                <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
+                <h3 className="text-xl font-semibold text-center">{offer.title}</h3>
+                <p className="text-gray-500 text-center">{offer.description}</p>
+                <div className="flex justify-center">
+                  <Button className="mt-4 text-white" style={{ color: 'white', backgroundColor: '#1e40af' }}>{offer.cta}</Button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Latest Products Section */}
-      <div className="mb-8 bg-white">
-        <h2 className="text-2xl font-semibold mb-4">Latest Products</h2>
-        <div className="flex overflow-x-auto space-x-4">
-          {latestProducts.map(product => (
-            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
-              <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{product.name}</h3>
-              <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
-            </div>
-          ))}
+      <div className="mb-8 bg-white flex justify-center">
+        <div className="w-3/4">
+          <h2 className="text-2xl font-semibold mb-4 text-center">Latest Products</h2>
+          <div className="flex overflow-x-auto space-x-4">
+            {latestProducts.map(product => (
+              <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+                <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
+                <h3 className="text-xl font-semibold">{product.name}</h3>
+                <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Sponsors Section */}
-      <div className="mb-8" style={{ backgroundColor: '#f9fafb' }}>
+      <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Sponsors</h2>
         <div className="flex overflow-x-auto space-x-4">
           {sponsors.map(sponsor => (
@@ -248,8 +250,8 @@ export default function Home() {
 
       {/* Product List */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product, index) => (
-          <Card key={idCounts[product.id] > 1 ? `${product.id}-${index}` : product.id}>
+        {products.map(product => (
+          <Card key={product.id}>
             <CardHeader>
               <CardTitle>{product.name}</CardTitle>
             </CardHeader>
