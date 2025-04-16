@@ -130,7 +130,7 @@ export default function Home() {
       <div className="flex justify-start items-center mb-4">
         {/* Logo */}
         <Image
-          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Flogo.png?alt=media&token=0e7b9433-df3c-425f-8790-7c9b3a311a59"
+          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Fflamingo.png?alt=media&token=973aa358-f496-41c0-b768-5e2b9af62e73"
           alt="MarG Logo"
           width={50}
           height={50}
@@ -153,7 +153,7 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto">
-          <Input
+             <Input
             type="search"
             placeholder="Search for products..."
             className="w-full md:w-1/2 mr-4"
