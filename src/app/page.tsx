@@ -17,7 +17,7 @@ import Link from 'next/link';
 export default function Home() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || undefined; // ✅ correct way
-  const initialSubcategory = searchParams.get('subcategory') || undefined;
+    const initialSubcategory = searchParams.get('subcategory') || undefined;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -163,12 +163,11 @@ export default function Home() {
             className="w-full md:w-1/2 mr-4"
             value={searchTerm}
             onChange={handleSearchChange}
-            style={{ backgroundColor: 'white' }}
           />
           {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline"  style={{ backgroundColor: 'white' }}>
+              <Button variant="outline">
                 Bag
                 {Object.keys(cart).length > 0 && (
                   <Badge className="ml-2">{Object.keys(cart).length}</Badge>
@@ -192,10 +191,10 @@ export default function Home() {
               />
             </DialogContent>
           </Dialog>
-          <Button variant="outline" className="ml-2"  style={{ backgroundColor: 'white' }}>
+          <Button variant="outline" className="ml-2">
             Profile
           </Button>
-          <Button variant="outline" className="ml-2"  style={{ backgroundColor: 'white' }}>
+          <Button variant="outline" className="ml-2">
             Wishlist
           </Button>
         </div>
@@ -268,3 +267,4 @@ export default function Home() {
     </div>
   );
 }
+
