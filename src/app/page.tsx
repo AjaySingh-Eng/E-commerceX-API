@@ -23,9 +23,13 @@ export default function Home() {
   const [cart, setCart] = useState<{[key: string]: number}>({});
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-    const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
+  const [gradientStyle, setGradientStyle] = useState('');
+
 
   useEffect(() => {
+    setGradientStyle('linear-gradient(to right, #f472b6, #1e40af)');
+
     const fetchProducts = async () => {
       const results = await searchProducts(searchTerm, activeCategory);
       setProducts(results);
@@ -87,45 +91,44 @@ export default function Home() {
     setSearchTerm(event.target.value);
   };
 
-    const offers = [
-        {
-            id: 'o1',
-            title: 'Summer Sale',
-            description: 'Up to 50% off on selected items!',
-            imageUrl: 'https://picsum.photos/id/300/800/300',
-            cta: 'Shop Now',
-        },
-        {
-            id: 'o2',
-            title: 'New Arrivals',
-            description: 'Check out our latest collection.',
-            imageUrl: 'https://picsum.photos/id/301/800/300',
-            cta: 'View New Arrivals',
-        },
-    ];
+  const offers = [
+    {
+      id: 'o1',
+      title: 'Summer Sale',
+      description: 'Up to 50% off on selected items!',
+      imageUrl: 'https://picsum.photos/id/300/800/300',
+      cta: 'Shop Now',
+    },
+    {
+      id: 'o2',
+      title: 'New Arrivals',
+      description: 'Check out our latest collection.',
+      imageUrl: 'https://picsum.photos/id/301/800/300',
+      cta: 'View New Arrivals',
+    },
+  ];
 
-    const latestProducts = products.slice(0, 5);
+  const latestProducts = products.slice(0, 5);
 
-    const sponsors = [
-        {
-            id: 's1',
-            name: 'Adidas',
-            logoUrl: 'https://picsum.photos/id/400/100/50',
-            link: '#',
-        },
-        {
-            id: 's2',
-            name: 'Nike',
-            logoUrl: 'https://picsum.photos/id/401/100/50',
-            link: '#',
-        },
-    ];
-
+  const sponsors = [
+    {
+      id: 's1',
+      name: 'Adidas',
+      logoUrl: 'https://picsum.photos/id/400/100/50',
+      link: '#',
+    },
+    {
+      id: 's2',
+      name: 'Nike',
+      logoUrl: 'https://picsum.photos/id/401/100/50',
+      link: '#',
+    },
+  ];
 
   return (
     <div className="container mx-auto p-4">
       {/* Header Section */}
-      <div className="flex justify-start items-center mb-4 bg-white">
+      <div className="flex justify-start items-center mb-4">
         {/* Website Name */}
         <div className="text-2xl font-bold text-left mr-4">
           <span className="inline-block">
@@ -152,11 +155,11 @@ export default function Home() {
         </div>
 
         {/* Search Bar */}
-        <div className="flex items-center ml-auto">
-             <Input
+        <div className="flex items-center ml-auto bg-white">
+          <Input
             type="search"
             placeholder="Search for products..."
-            className="w-full md:w-1/2 mr-4 bg-white"
+            className="w-full md:w-1/2 mr-4"
             value={searchTerm}
             onChange={handleSearchChange}
           />
@@ -197,15 +200,15 @@ export default function Home() {
       </div>
 
       {/* Offers Section */}
-      <div className="mb-8" style={{ background: 'linear-gradient(to right, #f472b6, #1e40af)' }}>
+      <div className="mb-8" style={{ background: gradientStyle }}>
         <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
         <div className="flex overflow-x-auto space-x-4">
           {offers.map(offer => (
             <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
               <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{offer.title}</h3>
-              <p className="text-gray-500">{offer.description}</p>
-              <Button className="mt-4" style={{ color: '#1e40af' }}>{offer.cta}</Button>
+              <h3 className="text-xl font-semibold text-white">{offer.title}</h3>
+              <p className="text-white">{offer.description}</p>
+              <Button className="mt-4 text-white" style={{ color: '#ffffff' }}>{offer.cta}</Button>
             </div>
           ))}
         </div>
@@ -263,4 +266,3 @@ export default function Home() {
     </div>
   );
 }
-

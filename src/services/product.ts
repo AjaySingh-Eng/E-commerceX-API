@@ -46,7 +46,7 @@ export async function getProduct(productId: string): Promise<Product> {
     name: 'Sample Product',
     description: 'This is a sample product description.',
     price: 25.00,
-    imageUrl: 'https://picsum.photos/200/300',
+    imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
     category: 'men',
     subcategory: 't-shirts',
   };
