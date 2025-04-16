@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ backgroundColor: 'skyblue' }}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ backgroundColor: 'white' }}>
         {children}
         <footer className="bg-dark-gray text-light-gray py-8">
           <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -199,4 +199,3 @@ export default function RootLayout({
     </html>
   );
 }
-
