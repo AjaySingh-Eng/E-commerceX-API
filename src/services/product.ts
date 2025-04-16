@@ -166,7 +166,7 @@ export async function searchProducts(query: string, category?: string, subcatego
       name: 'Boys T-shirt',
       description: 'A simple and cool t-shirt for boys',
       price: 14.99,
-      imageUrl: 'https://a.storyblok.com/f/165154/1500x700/b253b76d82/1_hero-image.jpg',
+      imageUrl: 'https://cdn.shopify.com/s/files/1/0984/4522/products/Microsoft-Logo-T-Shirt-For-Men_s-4_1024x1024.jpg?v=1587351812',
       category: 'kids',
       subcategory: 'shirts',
     },
