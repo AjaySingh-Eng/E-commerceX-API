@@ -22,6 +22,10 @@ id: string;
    * The URL of the product image.
    */
   imageUrl: string;
+    /**
+     * The category of the product.
+     */
+    category?: string;
 }
 
 /**
@@ -48,16 +52,15 @@ export async function getProduct(productId: string): Promise<Product> {
  * @param query The search query to filter products.
  * @returns A promise that resolves to an array of Product objects that match the search query.
  */
-export async function searchProducts(query: string): Promise<Product[]> {
-  // TODO: Implement this by calling an API.
-
-  return [
+export async function searchProducts(query: string, category?: string): Promise<Product[]> {
+  const allProducts: Product[] = [
     {
       id: '1',
       name: 'Stylish Blue T-Shirt',
       description: 'A comfortable and stylish blue t-shirt for casual wear.',
       price: 29.99,
       imageUrl: 'https://picsum.photos/id/250/300/200',
+      category: 'men',
     },
     {
       id: '2',
@@ -65,6 +68,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A classic black dress perfect for evening events.',
       price: 79.99,
       imageUrl: 'https://picsum.photos/id/251/300/200',
+      category: 'women',
     },
     {
       id: '3',
@@ -72,6 +76,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'Comfortable white sneakers suitable for everyday use.',
       price: 59.99,
       imageUrl: 'https://picsum.photos/id/252/300/200',
+      category: 'men',
     },
     {
       id: '4',
@@ -79,6 +84,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A warm and cozy winter jacket to keep you protected from the cold.',
       price: 99.99,
       imageUrl: 'https://picsum.photos/id/253/300/200',
+      category: 'men',
     },
     {
       id: '5',
@@ -86,6 +92,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A pair of classic denim jeans that can be styled in many ways.',
       price: 49.99,
       imageUrl: 'https://picsum.photos/id/254/300/200',
+      category: 'men',
     },
     {
       id: '6',
@@ -93,6 +100,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A vibrant floral skirt perfect for summer outings.',
       price: 39.99,
       imageUrl: 'https://picsum.photos/id/255/300/200',
+      category: 'women',
     },
     {
       id: '7',
@@ -100,6 +108,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'Stylish leather ankle boots for a chic look.',
       price: 89.99,
       imageUrl: 'https://picsum.photos/id/256/300/200',
+      category: 'women',
     },
     {
       id: '8',
@@ -107,6 +116,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A comfortable striped cotton shirt for a relaxed style.',
       price: 34.99,
       imageUrl: 'https://picsum.photos/id/257/300/200',
+      category: 'men',
     },
     {
       id: '9',
@@ -114,6 +124,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'A soft wool blend sweater perfect for cooler days.',
       price: 69.99,
       imageUrl: 'https://picsum.photos/id/258/300/200',
+      category: 'men',
     },
     {
       id: '10',
@@ -121,6 +132,54 @@ export async function searchProducts(query: string): Promise<Product[]> {
       description: 'Lightweight running shorts ideal for workouts and sports activities.',
       price: 24.99,
       imageUrl: 'https://picsum.photos/id/259/300/200',
+      category: 'men',
+    },
+    {
+      id: '11',
+      name: 'Girls Party Dress',
+      description: 'A Fancy dress for girls for partys',
+      price: 44.99,
+      imageUrl: 'https://picsum.photos/id/260/300/200',
+      category: 'kids',
+    },
+     {
+      id: '12',
+      name: 'Boys T-shirt',
+      description: 'A simple and cool t-shirt for boys',
+      price: 14.99,
+      imageUrl: 'https://picsum.photos/id/261/300/200',
+      category: 'kids',
+    },
+      {
+      id: '13',
+      name: 'Simple Bed',
+      description: 'A simple bed for your home',
+      price: 244.99,
+      imageUrl: 'https://picsum.photos/id/270/300/200',
+      category: 'home',
+    },
+     {
+      id: '14',
+      name: 'Table',
+      description: 'A simple table for your home',
+      price: 144.99,
+      imageUrl: 'https://picsum.photos/id/271/300/200',
+      category: 'home',
     },
   ];
+
+  let filteredProducts = allProducts;
+
+    if (category) {
+        filteredProducts = allProducts.filter(product => product.category === category);
+    }
+
+  if (query) {
+    filteredProducts = filteredProducts.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) ||
+      product.description.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
+  return filteredProducts;
 }

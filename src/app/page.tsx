@@ -11,22 +11,31 @@ import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Dia
 import {Badge} from "@/components/ui/badge"
 import {Icons} from "@/components/icons";
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+interface Props {
+  searchParams: {
+    category?: string
+  }
+}
+
+export default function Home({searchParams}: Props) {
+  const {category: initialCategory} = searchParams;
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<{[key: string]: number}>({});
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+    const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const results = await searchProducts(searchTerm);
+      const results = await searchProducts(searchTerm, activeCategory);
       setProducts(results);
     };
 
     fetchProducts();
-  }, [searchTerm]);
+  }, [searchTerm, activeCategory]);
 
   useEffect(() => {
     const fetchAiRecommendations = async () => {
@@ -87,7 +96,7 @@ export default function Home() {
       <div className="flex justify-start items-center mb-4">
         {/* Logo */}
         <Image
-          src="https://picsum.photos/50/50"
+          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Flogo.png?alt=media&token=0e7b9433-df3c-425f-8790-7c9b3a311a59"
           alt="MarG Logo"
           width={50}
           height={50}
@@ -99,18 +108,24 @@ export default function Home() {
 
         {/* Navigation Links */}
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-gray-700">Men</a>
-          <a href="#" className="hover:text-gray-700">Women</a>
-          <a href="#" className="hover:text-gray-700">Kids</a>
-          <a href="#" className="hover:text-gray-700">Home</a>
-          <a href="#" className="hover:text-gray-700">Beauty</a>
-          <a href="#" className="hover:text-gray-700">Genz</a>
-          <a href="#" className="hover:text-gray-700">Studio New</a>
+          <Link href="/men" className="hover:text-gray-700">Men</Link>
+          <Link href="/women" className="hover:text-gray-700">Women</Link>
+          <Link href="/kids" className="hover:text-gray-700">Kids</Link>
+          <Link href="/home" className="hover:text-gray-700">Home</Link>
+          <Link href="/beauty" className="hover:text-gray-700">Beauty</Link>
+          <Link href="/genz" className="hover:text-gray-700">Genz</Link>
+          <Link href="/studio-new" className="hover:text-gray-700">Studio New</Link>
         </div>
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto">
-
+             <Input
+            type="search"
+            placeholder="Search for products..."
+            className="w-full md:w-1/2 mr-4"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
           {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
@@ -144,13 +159,6 @@ export default function Home() {
           <Button variant="outline" className="ml-2">
             Wishlist
           </Button>
-             <Input
-            type="search"
-            placeholder="Search for products..."
-            className="w-full md:w-1/2 mr-4"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
         </div>
       </div>
 
