@@ -128,17 +128,21 @@ export default function Home() {
     <div className="container mx-auto p-4">
       {/* Header Section */}
       <div className="flex justify-start items-center mb-4">
-        {/* Logo */}
-        <Image
-          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Fflamingo.png?alt=media&token=973aa358-f496-41c0-b768-5e2b9af62e73"
-          alt="MarG Logo"
-          width={50}
-          height={50}
-          className="mr-4 rounded-full"
-        />
+
 
         {/* Website Name */}
-        <div className="text-2xl font-bold text-left mr-4">MarG</div>
+        <div className="text-2xl font-bold text-left mr-4">
+          <span className="inline-block">
+            <span className="text-red-500">F</span>
+            <span className="text-orange-500">l</span>
+            <span className="text-yellow-500">i</span>
+            <span className="text-green-500">p</span>
+            <span className="text-blue-500">m</span>
+            <span className="text-indigo-500">i</span>
+            <span className="text-violet-500">n</span>
+            <span className="text-red-500">t</span>
+          </span>
+        </div>
 
         {/* Navigation Links */}
         <div className="flex space-x-4">
