@@ -9,6 +9,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/compo
 import {ShoppingCart} from './shopping-cart';
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog"
 import {Badge} from "@/components/ui/badge"
+import {Icons} from "@/components/icons";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -81,9 +82,23 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
-        <div className="text-2xl font-bold text-left">MarG</div>
-        <div className="flex items-center">
+      {/* Header Section */}
+      <div className="flex justify-start items-center mb-4">
+        <div className="text-2xl font-bold text-left mr-4">MarG</div>
+
+        {/* Navigation Links */}
+        <div className="flex space-x-4">
+          <a href="#" className="hover:text-gray-700">Men</a>
+          <a href="#" className="hover:text-gray-700">Women</a>
+          <a href="#" className="hover:text-gray-700">Kids</a>
+          <a href="#" className="hover:text-gray-700">Home</a>
+          <a href="#" className="hover:text-gray-700">Beauty</a>
+          <a href="#" className="hover:text-gray-700">Genz</a>
+          <a href="#" className="hover:text-gray-700">Studio New</a>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex items-center ml-auto">
           <Input
             type="search"
             placeholder="Search for products..."
@@ -91,10 +106,12 @@ export default function Home() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
+
+          {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline">
-                View Cart
+                Bag
                 {Object.keys(cart).length > 0 && (
                   <Badge className="ml-2">{Object.keys(cart).length}</Badge>
                 )}
@@ -117,9 +134,16 @@ export default function Home() {
               />
             </DialogContent>
           </Dialog>
+          <Button variant="outline" className="ml-2">
+            Profile
+          </Button>
+          <Button variant="outline" className="ml-2">
+            Wishlist
+          </Button>
         </div>
       </div>
 
+      {/* Product List */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map(product => (
           <Card key={product.id}>
