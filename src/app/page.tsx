@@ -91,46 +91,47 @@ export default function Home() {
     setSearchTerm(event.target.value);
   };
 
-  const offers = [
-    {
-      id: 'o1',
-      title: 'Summer Sale',
-      description: 'Up to 50% off on selected items!',
-      imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
-      cta: 'Shop Now',
-    },
-    {
-      id: 'o2',
-      title: 'New Arrivals',
-      description: 'Check out our latest collection.',
-      imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
-      cta: 'View New Arrivals',
-    },
-  ];
+    const offers = [
+        {
+            id: 'o1',
+            title: 'Summer Sale',
+            description: 'Up to 50% off on selected items!',
+            imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
+            cta: 'Shop Now',
+        },
+        {
+            id: 'o2',
+            title: 'New Arrivals',
+            description: 'Check out our latest collection.',
+            imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
+            cta: 'View New Arrivals',
+        },
+    ];
 
-  const latestProducts = products.slice(0, 5);
+    const latestProducts = products.slice(0, 5);
 
-  const sponsors = [
-    {
-      id: 's1',
-      name: 'Adidas',
-      logoUrl: 'https://picsum.photos/id/400/100/50',
-      link: '#',
-    },
-    {
-      id: 's2',
-      name: 'Nike',
-      logoUrl: 'https://picsum.photos/id/401/100/50',
-      link: '#',
-    },
-  ];
+    const sponsors = [
+        {
+            id: 's1',
+            name: 'Adidas',
+            logoUrl: 'https://assets.crowdspring.com/marketing/struggle-bus_t-shirt_crowdspring.jpg',
+            link: '#',
+        },
+        {
+            id: 's2',
+            name: 'Nike',
+            logoUrl: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e193877326105.5c84bddba6e64.jpg',
+            link: '#',
+        },
+    ];
 
   return (
     <div className="container mx-auto p-4">
       {/* Header Section */}
-      <div className="flex justify-start items-center mb-4">
+      <div className="flex justify-center items-center mb-4">
+
         {/* Website Name */}
-        <div className="text-2xl font-bold text-left mr-4">
+        <div className="text-4xl font-bold text-center mr-4">
           <span className="inline-block">
             <span className="text-red-500">F</span>
             <span className="text-orange-500">l</span>
@@ -142,9 +143,8 @@ export default function Home() {
             <span className="text-red-500">t</span>
           </span>
         </div>
-
-        {/* Navigation Links */}
-        <div className="flex space-x-4">
+    </div>
+            <div className="flex space-x-4">
           <Link href="/men" className="hover:text-gray-700">Men</Link>
           <Link href="/women" className="hover:text-gray-700">Women</Link>
           <Link href="/kids" className="hover:text-gray-700">Kids</Link>
@@ -197,39 +197,33 @@ export default function Home() {
             Wishlist
           </Button>
         </div>
-      </div>
 
       {/* Offers Section */}
-      <div className="mb-8 flex justify-center" style={{ background: gradientStyle }}>
-    <div className="w-3/4 p-4">
-        <h2 className="text-2xl font-semibold mb-4 text-white text-center">Offers</h2>
-        <div className="flex overflow-x-auto space-x-4 justify-center">
-            {offers.map(offer => (
-                <div key={offer.id} className="w-72 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
-                    <img src={offer.imageUrl} alt={offer.title} className="w-full h-32 object-cover rounded-md mb-2" />
-                    <h3 className="text-xl font-semibold text-center">{offer.title}</h3>
-                    <p className="text-gray-500 text-center">{offer.description}</p>
-                    <Button className="mt-4 w-full" style={{ color: '#1e40af' }}>{offer.cta}</Button>
-                </div>
-            ))}
+      <div className="mb-8" style={{ background: gradientStyle }}>
+        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
+        <div className="flex overflow-x-auto space-x-4">
+          {offers.map(offer => (
+            <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
+              <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
+              <h3 className="text-xl font-semibold">{offer.title}</h3>
+              <p className="text-gray-500">{offer.description}</p>
+              <Button className="mt-4" style={{ color: '#1e40af' }}>{offer.cta}</Button>
+            </div>
+          ))}
         </div>
-    </div>
-</div>
-
+      </div>
 
       {/* Latest Products Section */}
-      <div className="mb-8 bg-white flex justify-center">
-        <div className="w-3/4">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Latest Products</h2>
+      <div className="mb-8 bg-white">
+        <h2 className="text-2xl font-semibold mb-4">Latest Products</h2>
         <div className="flex overflow-x-auto space-x-4">
           {latestProducts.map(product => (
-            <div key={product.id} className="w-48 p-4 border rounded-md shadow-sm flex-shrink-0">
-              <img src={product.imageUrl} alt={product.name} className="w-full h-32 object-cover rounded-md mb-2" />
+            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
               <h3 className="text-xl font-semibold">{product.name}</h3>
               <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
             </div>
           ))}
-        </div>
         </div>
       </div>
 
