@@ -73,11 +73,6 @@ export default function RootLayout({
                     Gift Cards
                   </Link>
                 </li>
-                <li>
-                  <Link href="#" className="hover:text-accent-coral">
-                    Flipmint Insider
-                  </Link>
-                </li>
               </ul>
             </div>
 
