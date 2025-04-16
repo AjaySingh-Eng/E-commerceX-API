@@ -26,7 +26,6 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string | undefined>(initialCategory);
   const [gradientStyle, setGradientStyle] = useState('');
 
-
   useEffect(() => {
     setGradientStyle('linear-gradient(to right, #f472b6, #1e40af)');
 
@@ -146,48 +145,53 @@ export default function Home() {
         },
     ];
 
+  useEffect(() => {
+    setGradientStyle('linear-gradient(to right, #f472b6, #1e40af)');
+  }, []);
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4" style={{ backgroundColor: '#f9fafb' }}>
       {/* Header Section */}
-      <div className="flex justify-start items-center mb-4">
+      <div className="flex justify-start items-center mb-4" style={{ backgroundColor: '#ffffff' }}>
         {/* Website Name */}
-        <div className="text-2xl font-bold text-left mr-4">
+        <div className="text-2xl font-bold text-left mr-4" style={{ textAlign: 'center', flexGrow: 1, color: '#1f2937' }}>
           <span className="inline-block">
-            <span className="text-red-500">F</span>
-            <span className="text-orange-500">l</span>
-            <span className="text-yellow-500">i</span>
-            <span className="text-green-500">p</span>
-            <span className="text-blue-500">m</span>
-            <span className="text-indigo-500">i</span>
-            <span className="text-violet-500">n</span>
-            <span className="text-red-500">t</span>
+            <span style={{ color: 'red' }}>F</span>
+            <span style={{ color: 'orange' }}>l</span>
+            <span style={{ color: 'yellow' }}>i</span>
+            <span style={{ color: 'green' }}>p</span>
+            <span style={{ color: 'blue' }}>m</span>
+            <span style={{ color: 'indigo' }}>i</span>
+            <span style={{ color: 'violet' }}>n</span>
+            <span style={{ color: 'red' }}>t</span>
           </span>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex space-x-4">
-          <Link href="/men" className="hover:text-gray-700">Men</Link>
-          <Link href="/women" className="hover:text-gray-700">Women</Link>
-          <Link href="/kids" className="hover:text-gray-700">Kids</Link>
-          <Link href="/home" className="hover:text-gray-700">Home</Link>
-          <Link href="/beauty" className="hover:text-gray-700">Beauty</Link>
-          <Link href="/genz" className="hover:text-gray-700">Genz</Link>
-          <Link href="/studio-new" className="hover:text-gray-700">Studio New</Link>
+        <div className="flex space-x-4" >
+          <Link href="/men" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Men</Link>
+          <Link href="/women" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Women</Link>
+          <Link href="/kids" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Kids</Link>
+          <Link href="/home" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Home</Link>
+          <Link href="/beauty" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Beauty</Link>
+          <Link href="/genz" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Genz</Link>
+          <Link href="/studio-new" className="hover:text-gray-700" style={{ color: '#1f2937' }}>Studio New</Link>
         </div>
 
         {/* Search Bar */}
-        <div className="flex items-center ml-auto bg-white">
+        <div className="flex items-center ml-auto" style={{ backgroundColor: '#ffffff' }}>
              <Input
             type="search"
             placeholder="Search for products..."
             className="w-full md:w-1/2 mr-4"
             value={searchTerm}
             onChange={handleSearchChange}
+            style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
           />
           {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline">
+              <Button variant="outline" style={{ backgroundColor: '#ffffff', color: '#1f2937' }}>
                 Bag
                 {Object.keys(cart).length > 0 && (
                   <Badge className="ml-2">{Object.keys(cart).length}</Badge>
@@ -211,39 +215,39 @@ export default function Home() {
               />
             </DialogContent>
           </Dialog>
-          <Button variant="outline" className="ml-2">
+          <Button variant="outline" className="ml-2" style={{ backgroundColor: '#ffffff', color: '#1f2937' }}>
             Profile
           </Button>
-          <Button variant="outline" className="ml-2">
+          <Button variant="outline" className="ml-2" style={{ backgroundColor: '#ffffff', color: '#1f2937' }}>
             Wishlist
           </Button>
         </div>
       </div>
 
       {/* Offers Section */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Offers</h2>
-        <div className="flex items-center justify-center overflow-x-auto space-x-4">
+      <div className="mb-8" style={{ background: gradientStyle, textAlign: 'center' }}>
+        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
+        <div className="flex overflow-x-auto space-x-4 justify-center">
           {offers.map(offer => (
-            <div key={offer.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+            <div key={offer.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0" style={{ backgroundColor: '#ffffff', borderColor: '#e5e7eb', textAlign: 'center' }}>
               <img src={offer.imageUrl} alt={offer.title} className="w-full h-32 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{offer.title}</h3>
-              <p className="text-gray-500">{offer.description}</p>
-              <Button className="mt-4 text-white" style={{ backgroundColor: '#1e40af' }}>{offer.cta}</Button>
+              <h3 className="text-xl font-semibold" style={{ color: '#1f2937' }}>{offer.title}</h3>
+              <p className="text-gray-500" style={{ color: '#1f2937' }}>{offer.description}</p>
+              <Button className="mt-4 text-white" style={{ backgroundColor: '#1e40af', color: '#ffffff' }}>{offer.cta}</Button>
             </div>
           ))}
         </div>
       </div>
 
       {/* Latest Products Section */}
-      <div className="mb-8 bg-white">
-        <h2 className="text-2xl font-semibold mb-4">Latest Products</h2>
+      <div className="mb-8" style={{ backgroundColor: '#ffffff' }}>
+        <h2 className="text-2xl font-semibold mb-4" style={{ color: '#1f2937' }}>Latest Products</h2>
         <div className="flex overflow-x-auto space-x-4">
           {latestProducts.map(product => (
-            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0" style={{ borderColor: '#e5e7eb' }}>
               <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{product.name}</h3>
-              <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
+              <h3 className="text-xl font-semibold" style={{ color: '#1f2937' }}>{product.name}</h3>
+              <div className="text-xl font-semibold text-teal-500" style={{ color: '#1e40af' }}>${product.price.toFixed(2)}</div>
             </div>
           ))}
         </div>
@@ -251,12 +255,12 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <div className="mb-8" style={{ backgroundColor: '#f9fafb' }}>
-        <h2 className="text-2xl font-semibold mb-4">Sponsors</h2>
+        <h2 className="text-2xl font-semibold mb-4" style={{ color: '#1f2937' }}>Sponsors</h2>
         <div className="flex overflow-x-auto space-x-4">
           {sponsors.map(sponsor => (
-            <div key={sponsor.id} className="w-48 p-4 border rounded-md shadow-sm flex-shrink-0">
+            <div key={sponsor.id} className="w-48 p-4 border rounded-md shadow-sm flex-shrink-0" style={{ borderColor: '#e5e7eb' }}>
               <img src={sponsor.logoUrl} alt={sponsor.name} className="w-full h-24 object-contain rounded-md mb-2" />
-              <h3 className="text-xl font-semibold">{sponsor.name}</h3>
+              <h3 className="text-xl font-semibold" style={{ color: '#1f2937' }}>{sponsor.name}</h3>
             </div>
           ))}
         </div>
@@ -265,9 +269,9 @@ export default function Home() {
       {/* Product List */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map(product => (
-          <Card key={product.id}>
+          <Card key={product.id} style={{ borderColor: '#e5e7eb' }}>
             <CardHeader>
-              <CardTitle>{product.name}</CardTitle>
+              <CardTitle style={{ color: '#1f2937' }}>{product.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col items-center">
               <img
@@ -275,9 +279,9 @@ export default function Home() {
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-md mb-2"
               />
-              <CardDescription className="text-center">{product.description}</CardDescription>
-              <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
-              <Button className="mt-4" onClick={() => addToCart(product)}>
+              <CardDescription className="text-center" style={{ color: '#1f2937' }}>{product.description}</CardDescription>
+              <div className="text-xl font-semibold text-teal-500" style={{ color: '#1e40af' }}>${product.price.toFixed(2)}</div>
+              <Button className="mt-4" onClick={() => addToCart(product)} style={{ backgroundColor: '#1e40af', color: '#ffffff' }}>
                 Add to Cart
               </Button>
             </CardContent>
