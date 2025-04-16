@@ -157,7 +157,7 @@ export async function searchProducts(query: string, category?: string, subcatego
       name: 'Girls Party Dress',
       description: 'A Fancy dress for girls for partys',
       price: 44.99,
-      imageUrl: 'https://lagorii.com/products/navy-blue-sequined-partywear-gown-for-girls#images-1',
+      imageUrl: 'https://www.free-mockup.com/wp-content/uploads/edd/2018/02/Free-Woman-T-Shirt-Mockup-PSD.jpg',
       category: 'kids',
       subcategory: 'dresses',
     },
