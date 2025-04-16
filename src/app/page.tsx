@@ -208,6 +208,12 @@ export default function Home() {
               <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
               <h3 className="text-xl font-semibold text-white">{offer.title}</h3>
               <p className="text-white">{offer.description}</p>
+                <Image
+                    src="https://picsum.photos/200/100"  // Add your image here
+                    alt="Offer Image"
+                    width={200}
+                    height={100}
+                />
               <Button className="mt-4 text-white" style={{ color: '#ffffff' }}>{offer.cta}</Button>
             </div>
           ))}
