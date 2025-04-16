@@ -128,10 +128,10 @@ export default function Home() {
   return (
     <div className="container mx-auto p-4">
       {/* Header Section */}
-      <div className="flex justify-center items-center mb-4">
+      <div className="flex justify-start items-center mb-4">
 
         {/* Website Name */}
-        <div className="text-4xl font-bold text-center mr-4">
+        <div className="text-2xl font-bold text-left mr-4">
           <span className="inline-block">
             <span className="text-red-500">F</span>
             <span className="text-orange-500">l</span>
@@ -143,8 +143,9 @@ export default function Home() {
             <span className="text-red-500">t</span>
           </span>
         </div>
-    </div>
-            <div className="flex space-x-4">
+
+        {/* Navigation Links */}
+        <div className="flex space-x-4">
           <Link href="/men" className="hover:text-gray-700">Men</Link>
           <Link href="/women" className="hover:text-gray-700">Women</Link>
           <Link href="/kids" className="hover:text-gray-700">Kids</Link>
@@ -197,6 +198,7 @@ export default function Home() {
             Wishlist
           </Button>
         </div>
+      </div>
 
       {/* Offers Section */}
       <div className="mb-8" style={{ background: gradientStyle }}>
