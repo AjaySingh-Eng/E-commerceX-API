@@ -75,7 +75,7 @@ export default function RootLayout({
                 </li>
                 <li>
                   <Link href="#" className="hover:text-accent-coral">
-                    Myntra Insider
+                    Flipmint Insider
                   </Link>
                 </li>
               </ul>
@@ -179,7 +179,7 @@ export default function RootLayout({
           <div className="container mx-auto mt-8 flex flex-col md:flex-row justify-between items-center">
             {/* EXPERIENCE MYNTRA APP ON MOBILE */}
             <div>
-              <h3 className="font-bold text-lg mb-2">EXPERIENCE MYNTRA APP ON MOBILE</h3>
+              <h3 className="font-bold text-lg mb-2">EXPERIENCE Flipmint APP ON MOBILE</h3>
               {/* Add your app store links or images here */}
             </div>
 
