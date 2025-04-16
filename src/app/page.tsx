@@ -82,39 +82,42 @@ export default function Home() {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <Input
-          type="search"
-          placeholder="Search for products..."
-          className="w-full md:w-1/2 mr-4"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline">
-              View Cart
-              {Object.keys(cart).length > 0 && (
-                <Badge className="ml-2">{Object.keys(cart).length}</Badge>
-              )}
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Shopping Cart</DialogTitle>
-              <DialogDescription>
-                Review and manage the items in your cart.
-              </DialogDescription>
-            </DialogHeader>
-            <ShoppingCart
-              cart={cart}
-              products={products}
-              removeFromCart={removeFromCart}
-              updateCartItemQuantity={updateCartItemQuantity}
-              aiRecommendations={aiRecommendations}
-              addToCart={addToCart}
-            />
-          </DialogContent>
-        </Dialog>
+        <div className="text-2xl font-bold text-left">MarG</div>
+        <div className="flex items-center">
+          <Input
+            type="search"
+            placeholder="Search for products..."
+            className="w-full md:w-1/2 mr-4"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                View Cart
+                {Object.keys(cart).length > 0 && (
+                  <Badge className="ml-2">{Object.keys(cart).length}</Badge>
+                )}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Shopping Cart</DialogTitle>
+                <DialogDescription>
+                  Review and manage the items in your cart.
+                </DialogDescription>
+              </DialogHeader>
+              <ShoppingCart
+                cart={cart}
+                products={products}
+                removeFromCart={removeFromCart}
+                updateCartItemQuantity={updateCartItemQuantity}
+                aiRecommendations={aiRecommendations}
+                addToCart={addToCart}
+              />
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
