@@ -10,6 +10,7 @@ import {ShoppingCart} from './shopping-cart';
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog"
 import {Badge} from "@/components/ui/badge"
 import {Icons} from "@/components/icons";
+import Image from 'next/image';
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -84,6 +85,16 @@ export default function Home() {
     <div className="container mx-auto p-4">
       {/* Header Section */}
       <div className="flex justify-start items-center mb-4">
+        {/* Logo */}
+        <Image
+          src="https://picsum.photos/50/50"
+          alt="MarG Logo"
+          width={50}
+          height={50}
+          className="mr-4 rounded-full"
+        />
+
+        {/* Website Name */}
         <div className="text-2xl font-bold text-left mr-4">MarG</div>
 
         {/* Navigation Links */}
@@ -99,13 +110,6 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto">
-          <Input
-            type="search"
-            placeholder="Search for products..."
-            className="w-full md:w-1/2 mr-4"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
 
           {/* Cart Icon and Dialog */}
           <Dialog>
@@ -140,6 +144,13 @@ export default function Home() {
           <Button variant="outline" className="ml-2">
             Wishlist
           </Button>
+             <Input
+            type="search"
+            placeholder="Search for products..."
+            className="w-full md:w-1/2 mr-4"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </div>
       </div>
 
