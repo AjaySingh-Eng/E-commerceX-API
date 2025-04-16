@@ -157,7 +157,7 @@ export async function searchProducts(query: string, category?: string, subcatego
       name: 'Girls Party Dress',
       description: 'A Fancy dress for girls for partys',
       price: 44.99,
-      imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
+      imageUrl: 'https://clipart-library.com/images/8T65rGaac.jpg',
       category: 'kids',
       subcategory: 'dresses',
     },
@@ -166,7 +166,7 @@ export async function searchProducts(query: string, category?: string, subcatego
       name: 'Boys T-shirt',
       description: 'A simple and cool t-shirt for boys',
       price: 14.99,
-      imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
+      imageUrl: 'https://a.storyblok.com/f/165154/1500x700/b253b76d82/1_hero-image.jpg',
       category: 'kids',
       subcategory: 'shirts',
     },
@@ -224,6 +224,24 @@ export async function searchProducts(query: string, category?: string, subcatego
       category: 'genz',
       subcategory: 'clothing',
     },
+        {
+            id: '19',
+            name: 'AI Generated Woman in Shirt',
+            description: 'AI Generated Woman in Shirt',
+            price: 24.99,
+            imageUrl: 'https://pixabay.com/illustrations/ai-generated-woman-beauty-shirt-8751042/',
+            category: 'women',
+            subcategory: 'shirts',
+        },
+        {
+            id: '20',
+            name: 'AI Generated Woman Casual Portrait',
+            description: 'AI Generated Woman Casual Portrait',
+            price: 34.99,
+            imageUrl: 'https://pixabay.com/illustrations/ai-generated-woman-casual-portrait-8520212/',
+            category: 'women',
+            subcategory: 'shirts',
+        },
     {
       id: '19',
       name: 'Paint Brush',
@@ -264,4 +282,3 @@ export async function searchProducts(query: string, category?: string, subcatego
 
   return filteredProducts;
 }
-
