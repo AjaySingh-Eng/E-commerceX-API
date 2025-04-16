@@ -96,14 +96,14 @@ export default function Home() {
       id: 'o1',
       title: 'Summer Sale',
       description: 'Up to 50% off on selected items!',
-      imageUrl: 'https://picsum.photos/id/300/800/300',
+      imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
       cta: 'Shop Now',
     },
     {
       id: 'o2',
       title: 'New Arrivals',
       description: 'Check out our latest collection.',
-      imageUrl: 'https://picsum.photos/id/301/800/300',
+      imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
       cta: 'View New Arrivals',
     },
   ];
@@ -156,7 +156,7 @@ export default function Home() {
 
         {/* Search Bar */}
         <div className="flex items-center ml-auto bg-white">
-          <Input
+             <Input
             type="search"
             placeholder="Search for products..."
             className="w-full md:w-1/2 mr-4"
@@ -200,37 +200,36 @@ export default function Home() {
       </div>
 
       {/* Offers Section */}
-      <div className="mb-8" style={{ background: gradientStyle }}>
-        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
-        <div className="flex overflow-x-auto space-x-4">
-          {offers.map(offer => (
-            <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
-              <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
-              <h3 className="text-xl font-semibold text-white">{offer.title}</h3>
-              <p className="text-white">{offer.description}</p>
-                <Image
-                    src="https://picsum.photos/200/100"  // Add your image here
-                    alt="Offer Image"
-                    width={200}
-                    height={100}
-                />
-              <Button className="mt-4 text-white" style={{ color: '#ffffff' }}>{offer.cta}</Button>
-            </div>
-          ))}
+      <div className="mb-8 flex justify-center" style={{ background: gradientStyle }}>
+    <div className="w-3/4 p-4">
+        <h2 className="text-2xl font-semibold mb-4 text-white text-center">Offers</h2>
+        <div className="flex overflow-x-auto space-x-4 justify-center">
+            {offers.map(offer => (
+                <div key={offer.id} className="w-72 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
+                    <img src={offer.imageUrl} alt={offer.title} className="w-full h-32 object-cover rounded-md mb-2" />
+                    <h3 className="text-xl font-semibold text-center">{offer.title}</h3>
+                    <p className="text-gray-500 text-center">{offer.description}</p>
+                    <Button className="mt-4 w-full" style={{ color: '#1e40af' }}>{offer.cta}</Button>
+                </div>
+            ))}
         </div>
-      </div>
+    </div>
+</div>
+
 
       {/* Latest Products Section */}
-      <div className="mb-8 bg-white">
-        <h2 className="text-2xl font-semibold mb-4">Latest Products</h2>
+      <div className="mb-8 bg-white flex justify-center">
+        <div className="w-3/4">
+        <h2 className="text-2xl font-semibold mb-4 text-center">Latest Products</h2>
         <div className="flex overflow-x-auto space-x-4">
           {latestProducts.map(product => (
-            <div key={product.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
-              <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
+            <div key={product.id} className="w-48 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={product.imageUrl} alt={product.name} className="w-full h-32 object-cover rounded-md mb-2" />
               <h3 className="text-xl font-semibold">{product.name}</h3>
               <div className="text-xl font-semibold text-teal-500">${product.price.toFixed(2)}</div>
             </div>
           ))}
+        </div>
         </div>
       </div>
 
