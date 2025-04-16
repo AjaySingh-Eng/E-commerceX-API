@@ -157,7 +157,7 @@ export async function searchProducts(query: string, category?: string, subcatego
       name: 'Girls Party Dress',
       description: 'A Fancy dress for girls for partys',
       price: 44.99,
-      imageUrl: 'https://clipart-library.com/images/8T65rGaac.jpg',
+      imageUrl: 'https://lagorii.com/products/navy-blue-sequined-partywear-gown-for-girls#images-1',
       category: 'kids',
       subcategory: 'dresses',
     },
