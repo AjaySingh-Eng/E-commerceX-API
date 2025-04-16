@@ -1,5 +1,6 @@
-"use client";
+'use client';
 
+import { useSearchParams } from 'next/navigation';
 import {useState, useEffect} from 'react';
 import {Product, searchProducts} from '@/services/product';
 import {getProductRecommendations} from '@/ai/flows/product-recommendations';
@@ -13,14 +14,10 @@ import {Icons} from "@/components/icons";
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface Props {
-  searchParams: {
-    category?: string
-  }
-}
+export default function Home() {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get('category') || undefined; // ✅ correct way
 
-export default function Home({searchParams}: Props) {
-  const {category: initialCategory} = searchParams;
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState<{[key: string]: number}>({});
@@ -96,7 +93,7 @@ export default function Home({searchParams}: Props) {
       <div className="flex justify-start items-center mb-4">
         {/* Logo */}
         <Image
-          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Flogo.png?alt=media&token=0e7b9433-df3c-425f-8790-7c9b3a311a59"
+          src="https://firebasestorage.googleapis.com/v0/b/frappe-st.appspot.com/o/MarG%2Fflamingo.png?alt=media&token=8f884a5f-b7a3-4b5b-a98f-2b0b3b6f1f0b"
           alt="MarG Logo"
           width={50}
           height={50}
@@ -122,14 +119,14 @@ export default function Home({searchParams}: Props) {
              <Input
             type="search"
             placeholder="Search for products..."
-            className="w-full md:w-1/2 mr-4"
+            className="w-full md:w-1/2 mr-4 bg-white"
             value={searchTerm}
             onChange={handleSearchChange}
           />
           {/* Cart Icon and Dialog */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline">
+              <Button variant="outline" style={{ backgroundColor: 'white' }}>
                 Bag
                 {Object.keys(cart).length > 0 && (
                   <Badge className="ml-2">{Object.keys(cart).length}</Badge>
@@ -153,10 +150,10 @@ export default function Home({searchParams}: Props) {
               />
             </DialogContent>
           </Dialog>
-          <Button variant="outline" className="ml-2">
+          <Button variant="outline" className="ml-2"  style={{ backgroundColor: 'white' }}>
             Profile
           </Button>
-          <Button variant="outline" className="ml-2">
+          <Button variant="outline" className="ml-2"  style={{ backgroundColor: 'white' }}>
             Wishlist
           </Button>
         </div>
