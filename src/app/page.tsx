@@ -91,22 +91,43 @@ export default function Home() {
     setSearchTerm(event.target.value);
   };
 
-    const offers = [
-        {
-            id: 'o1',
-            title: 'Summer Sale',
-            description: 'Up to 50% off on selected items!',
-            imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
-            cta: 'Shop Now',
-        },
-        {
-            id: 'o2',
-            title: 'New Arrivals',
-            description: 'Check out our latest collection.',
-            imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
-            cta: 'View New Arrivals',
-        },
-    ];
+  const offers = [
+    {
+      id: 'o1',
+      title: 'Summer Sale',
+      description: 'Up to 50% off on selected items!',
+      imageUrl: 'https://cbu01.alicdn.com/img/ibank/2018/773/581/8688185377_2107390325.jpg',
+      cta: 'Shop Now',
+    },
+    {
+      id: 'o2',
+      title: 'New Arrivals',
+      description: 'Check out our latest collection.',
+      imageUrl: 'https://ph-test-11.slatic.net/p/aa0f67fbd74bb995aa022b33efeda858.jpg',
+      cta: 'View New Arrivals',
+    },
+    {
+      id: 'o3',
+      title: 'New T-shirts',
+      description: 'Check out our latest T-shirts collection.',
+      imageUrl: 'https://assets.crowdspring.com/marketing/struggle-bus_t-shirt_crowdspring.jpg',
+      cta: 'View New T-shirts',
+    },
+    {
+      id: 'o4',
+      title: 'Jeans Collection',
+      description: 'New Jeans Collection is available.',
+      imageUrl: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e193877326105.5c84bddba6e64.jpg',
+      cta: 'View New Jeans',
+    },
+    {
+      id: 'o5',
+      title: 'One color T-shirts',
+      description: 'New One color T-shirts are available.',
+      imageUrl: 'https://www.glccreativedesigns.com/wp-content/uploads/2017/07/GLC-One-Color-TShirt.png',
+      cta: 'View One color T-shirts',
+    },
+  ];
 
     const latestProducts = products.slice(0, 5);
 
@@ -114,13 +135,13 @@ export default function Home() {
         {
             id: 's1',
             name: 'Adidas',
-            logoUrl: 'https://assets.crowdspring.com/marketing/struggle-bus_t-shirt_crowdspring.jpg',
+            logoUrl: 'https://picsum.photos/id/400/100/50',
             link: '#',
         },
         {
             id: 's2',
             name: 'Nike',
-            logoUrl: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e193877326105.5c84bddba6e64.jpg',
+            logoUrl: 'https://picsum.photos/id/401/100/50',
             link: '#',
         },
     ];
@@ -129,7 +150,6 @@ export default function Home() {
     <div className="container mx-auto p-4">
       {/* Header Section */}
       <div className="flex justify-start items-center mb-4">
-
         {/* Website Name */}
         <div className="text-2xl font-bold text-left mr-4">
           <span className="inline-block">
@@ -201,15 +221,15 @@ export default function Home() {
       </div>
 
       {/* Offers Section */}
-      <div className="mb-8" style={{ background: gradientStyle }}>
-        <h2 className="text-2xl font-semibold mb-4 text-white">Offers</h2>
-        <div className="flex overflow-x-auto space-x-4">
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Offers</h2>
+        <div className="flex items-center justify-center overflow-x-auto space-x-4">
           {offers.map(offer => (
-            <div key={offer.id} className="w-96 p-4 border rounded-md shadow-sm flex-shrink-0 bg-white">
-              <img src={offer.imageUrl} alt={offer.title} className="w-full h-48 object-cover rounded-md mb-2" />
+            <div key={offer.id} className="w-64 p-4 border rounded-md shadow-sm flex-shrink-0">
+              <img src={offer.imageUrl} alt={offer.title} className="w-full h-32 object-cover rounded-md mb-2" />
               <h3 className="text-xl font-semibold">{offer.title}</h3>
               <p className="text-gray-500">{offer.description}</p>
-              <Button className="mt-4" style={{ color: '#1e40af' }}>{offer.cta}</Button>
+              <Button className="mt-4 text-white" style={{ backgroundColor: '#1e40af' }}>{offer.cta}</Button>
             </div>
           ))}
         </div>
